@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Close Specific Page</title>
+<style>
+/* 全局元素样式 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 确保flex容器充满整个视口高度 */
+    justify-content: space-between; /* 分散对齐，确保按钮位于底部 */
+
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    min-width: 420px;
+}
+
+/* 标题样式 */
+h1,
+h2 {
+    color: #333;
+    margin-top: 0;
+}
+
+/* 输入框和按钮风格 */
+input[type="text"],
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, .25);
+    outline: none;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* 规则列表和规则项风格 */
+#rulesList {
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.rule {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fafafa;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.rule > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 80%;
+}
+
+.rule button {
+    width: 60px;
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: #ff4d4f;
+    color: white;
+    border-radius: 4px;
+}
+
+.rule button:hover {
+    background-color: #d9363e;
+}
+
+#resetRules {
+    background-color: #cccccc;
+    color: #333;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-size: 12px;
+    margin-top: 20px; /* 为按钮和规则列表之间提供一些空间 */
+    align-self: flex-end; /* 如果在flex容器内，可用此属性对齐到右侧 */
+}
+
+#resetRules:hover {
+    background-color: #aaaaaa;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Close Page Rules</h1>
+
+<label for="urlKeyword">URL Regex:</label>
+<input type="text" id="urlKeyword" placeholder="Enter new rule (Regex)">
+
+<label for="contentKeywords">Content Keywords:</label>
+<input type="text" id="contentKeywords" placeholder="Enter content keywords (comma separated)">
+
+<label for="delayTime">Delay Time (ms):</label>
+<input type="text" id="delayTime" placeholder="Enter delay time in milliseconds (Default: 0)">
+
+<button id="addRule">Add Rule</button>
+
+
+<h2 id="rulesTitle">Existing Rules</h2>
+<div id="rulesList">
+    <!-- Rules will be dynamically inserted here -->
+</div>
+
+<button id="resetRules">Reset Rules</button>
+
+<script src="popup.js"></script>
+</body>
+</html>
